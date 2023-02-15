@@ -20,15 +20,16 @@ import {
   animations: [
     trigger('flyInOut', [
       state('in', style({
-        width: 250,
-        transform: 'translateX(0)', opacity: 1
+        width: '100%',
+        transform: 'translateX(0)',
+        opacity: 1
       })),
       transition('void => *', [
-        style({width: 10, transform: 'translateX(50px)', opacity: 0}),
+        style({width: '25%', transform: 'translateX(25%)', opacity: 0}),
         group([
           animate('0.3s 0.1s ease', style({
             transform: 'translateX(0)',
-            width: 200
+            width: '50%'
           })),
           animate('0.3s ease', style({
             opacity: 1
@@ -39,7 +40,7 @@ import {
         group([
           animate('0.3s ease', style({
             transform: 'translateX(50px)',
-            width: 150
+            width: '75%'
           })),
           animate('0.3s 0.2s ease', style({
             opacity: 0
