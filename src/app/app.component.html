@@ -1,5 +1,137 @@
 <section class="container">
   <ng-container *ngIf="!isCompleteBefore; else thanksText">
+    <h1 class="header-text">Шановний респонденте!</h1>
+    <h2 class="header-text">Кафедра управління та економіки фармації Запорізького державного медичного університету
+      проводить дослідження з
+      вивчення потреб у послугах з ВИДАЛЕННЯ НЕБАЖАНОГО ВОЛОССЯ. Ваша відповідь допоможе нам у вивченні даної проблеми
+      та у майбутньому стане підґрунтям для покращення косметологічних послуг.
+    </h2>
+    <p class="sub-title">
+      Просимо Вас уважно ознайомитися з представленими питаннями і вибрати найбільш прийнятну, на Вашу думку, відповідь.
+    </p>
+    <h3 class="header-text">З турботою про ВАС!
+      <br>
+      КОНФІДЕНЦІЙНІСТЬ ВАШИХ ВІДПОВІДЕЙ ГАРАНТУЄТЬСЯ!
+    </h3>
+    <form [formGroup]="form" class="container__questions">
+      <section class="question-container">
+        <label class="question">Ваш вік:</label>
+        <mat-radio-group class="controls" formControlName="age">
+          <mat-radio-button value="До 20 років">До 20 років</mat-radio-button>
+          <mat-radio-button value="Від 21 до 25 років">Від 21 до 25 років</mat-radio-button>
+          <mat-radio-button value="Від 16 до 30 років">Від 16 до 30 років</mat-radio-button>
+          <mat-radio-button value="Від 31 до 35 років">Від 31 до 35 років</mat-radio-button>
+          <mat-radio-button value="Від 36 до 40 років">Від 36 до 40 років</mat-radio-button>
+          <mat-radio-button value="Від 41 до 45 років">Від 41 до 45 років</mat-radio-button>
+          <mat-radio-button value="Від 45 до 50 років">Від 45 до 50 років</mat-radio-button>
+          <mat-radio-button value="Від 50 років">Від 50 років</mat-radio-button>
+        </mat-radio-group>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Чи турбувала Вас проблема щодо небажаного волосся?</label>
+        <mat-radio-group class="controls" formControlName="problemOfUnwantedHair">
+          <mat-radio-button value="Так">Так</mat-radio-button>
+          <mat-radio-button value="Ні">Ні</mat-radio-button>
+        </mat-radio-group>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Чи звертались ви до косметологічного кабінету/салону краси з цього приводу?</label>
+        <mat-radio-group class="controls" formControlName="contactedToСosmetology">
+          <mat-radio-button value="Так">Так</mat-radio-button>
+          <mat-radio-button value="Ні">Ні</mat-radio-button>
+          <mat-radio-button value="Вирішую це питання самостійно дома (крем для депіляції, бритва, депілятор).">
+            Вирішую це питання самостійно дома (крем для депіляції, бритва, депілятор).
+          </mat-radio-button>
+        </mat-radio-group>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Чи допомогли Вам використані вами методи з видалення волосся?</label>
+        <mat-radio-group class="controls" formControlName="isHelpMethods">
+          <mat-radio-button value="Так">Так</mat-radio-button>
+          <mat-radio-button value="Ні">Ні</mat-radio-button>
+          <mat-radio-button value="Не повністю">
+            Не повністю
+          </mat-radio-button>
+          <mat-radio-button class="example-margin" value="Не користуюсь">
+            Не користуюсь
+          </mat-radio-button>
+        </mat-radio-group>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Чи вважаєте Ви, що існують методи, які можуть вирішити проблему назавжди?</label>
+        <mat-radio-group class="controls" formControlName="isExistMethodsToResolveThisProblems">
+          <mat-radio-button value="Так">Так</mat-radio-button>
+          <mat-radio-button value="Ні">Ні</mat-radio-button>
+          <mat-radio-button value="Не знаю">
+            Не знаю
+          </mat-radio-button>
+        </mat-radio-group>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Чи вважаєте Ви, що вартість деяких послуг з видалення волосся є завищеною?</label>
+        <mat-radio-group class="controls" formControlName="isExpensiveServiceToResolveProblem">
+          <mat-radio-button value="Так">Так</mat-radio-button>
+          <mat-radio-button value="Ні">Ні</mat-radio-button>
+          <mat-radio-button value="Важко відповісти">
+            Важко відповісти
+          </mat-radio-button>
+        </mat-radio-group>
+      </section>
+      <h3 class="header-text">
+        Ознайомтесь з методами епіляції та їх основними характеристиками.
+        <br>
+        Зазначте ту інформацію, яка виявилась для вас
+        новою, або відносно якої у вас були інші уявлення.
+      </h3>
+
+      <section class="question-container">
+        <label class="question">Лазерна епіляція</label>
+        <ng-container *ngFor="let laser of laserEpilation.controls; let i = index">
+          <mat-checkbox [formControl]="$any(laser)">{{LASERE_PILATION[i].value}}</mat-checkbox>
+        </ng-container>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Елос-епіляція</label>
+        <ng-container *ngFor="let laser of elosEpilation.controls; let i = index">
+          <mat-checkbox [formControl]="$any(laser)">{{ELOS_EPILATION[i].value}}</mat-checkbox>
+        </ng-container>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Фотоепіляція</label>
+        <ng-container *ngFor="let laser of photoEpilation.controls; let i = index">
+          <mat-checkbox [formControl]="$any(laser)">{{PHOTO_EPILATION[i].value}}</mat-checkbox>
+        </ng-container>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Електроепіляція</label>
+        <ng-container *ngFor="let laser of electroEpilation.controls; let i = index">
+          <mat-checkbox [formControl]="$any(laser)">{{ELECTRO_EPILATION[i].value}}</mat-checkbox>
+        </ng-container>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Шугаринг</label>
+        <ng-container *ngFor="let laser of sugaring.controls; let i = index">
+          <mat-checkbox [formControl]="$any(laser)">{{SUGARING[i].value}}</mat-checkbox>
+        </ng-container>
+      </section>
+
+      <section class="question-container">
+        <label class="question">Воскова епіляція</label>
+        <ng-container *ngFor="let laser of waxEpilation.controls; let i = index">
+          <mat-checkbox [formControl]="$any(laser)">{{WAX_EPILATION[i].value}}</mat-checkbox>
+        </ng-container>
+      </section>
+
+    </form>
     <article class="container__list">
       <app-card [@flyInOut]="'in'"
                 *ngFor="let card of cards;
@@ -11,6 +143,11 @@
                 (click)="select(i, card)">
       </app-card>
     </article>
+    <button (click)="submit()"
+            [disabled]="form.invalid || (selectedCards.length !== RANGING.length)"
+            class="submit-btn">
+      Завершити опитування
+    </button>
   </ng-container>
   <ng-template #thanksText>
     <img class="thanks-illustration" src="assets/thank-you.svg" alt="">

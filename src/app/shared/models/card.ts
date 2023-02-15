@@ -4,3 +4,8 @@ export interface Card {
   body: string;
   price: number;
 }
+
+export interface Question {
+  selected: boolean;
+  value: string;
+}

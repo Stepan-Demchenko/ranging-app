@@ -12,19 +12,20 @@ export class SpreadSheetsService {
   constructor(private readonly http: HttpClient) {
   }
 
-  createSheet(ranging: number[]) {
-    // const d = new Date();
-    // const date = d.toISOString().slice(0, 10);
-    // const time = `${d.getHours()} : ${d.getMinutes()}`
-    // return this.http.post<any>(`${environment.CONNECTION_URL}`, {
-    //   date,
-    //   time,
-    //   ranging
-    // }).pipe(
-    //   tap(() => {
-    //     localStorage.setItem(STORAGE_KEY, 'true');
-    //   })
-    // );
-    localStorage.setItem(STORAGE_KEY, 'true');
+  createSheet(ranging: number[], formValues: any): Observable<unknown> {
+    const d = new Date();
+    const date = d.toISOString().slice(0, 10);
+    const time = `${d.getHours()} : ${d.getMinutes()}`;
+    return this.http.post<any>(`${environment.CONNECTION_URL}`,
+      {
+        date,
+        time,
+        ranging,
+        ...formValues
+      }).pipe(
+      tap(() => {
+        localStorage.setItem(STORAGE_KEY, 'true');
+      })
+    );
   }
 }
