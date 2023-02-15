@@ -1,0 +1,21 @@
+.container {
+  min-height: 100vh;
+  &__list {
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(4, 200px);
+    gap: 16px;
+    min-height: 100vh;
+
+    @media screen and (max-width: 580px) {
+      grid-template-columns: repeat(2, 200px);
+    }
+  }
+}
+
+.thanks-illustration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
