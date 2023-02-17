@@ -130,8 +130,13 @@
           <mat-checkbox [formControl]="$any(laser)">{{WAX_EPILATION[i].value}}</mat-checkbox>
         </ng-container>
       </section>
-
     </form>
+    <h3 class="header-text">
+      Проранжуйте види: оберіть із пропонованих 4 карток одну найбільш вагому за параметрами (вид, ціна, консультація і
+      обслуговування). Загалом буде представлено різні набори карток, але завжди потрібно обирати 1 із 4 варіантів.
+      <br>
+      Обирайте поки картки не закінчаться.
+    </h3>
     <article class="container__list">
       <app-card [@flyInOut]="'in'"
                 *ngFor="let card of cards;
