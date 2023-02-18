@@ -21,7 +21,10 @@
   transition: 0.4s;
 
   &:hover {
-    background-color: gray;
+    background-color: #ff3f80;
+    .price, .title, .body {
+      color: white;
+    }
   }
 
   .title {
