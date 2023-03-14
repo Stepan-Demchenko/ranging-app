@@ -149,9 +149,9 @@
       </app-card>
     </article>
     <button (click)="submit()"
-            [disabled]="form.invalid || (selectedCards.length !== RANGING.length)"
+            [disabled]="form.invalid || (selectedCards.length !== RANGING.length) || isLoading"
             class="submit-btn">
-      Завершити опитування
+      {{ !isLoading ? 'Завершити опитування' : 'Зачекайте'}}
     </button>
   </ng-container>
   <ng-template #thanksText>

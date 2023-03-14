@@ -64,6 +64,7 @@ export class AppComponent implements OnInit {
   SUGARING = SUGARING;
   WAX_EPILATION = WAX_EPILATION;
   trackById = (index: number, entity: Card) => entity.id;
+  isLoading = false;
 
   constructor(private readonly spreadSheet: SpreadSheetsService,
               private readonly fb: FormBuilder) {
@@ -152,6 +153,7 @@ export class AppComponent implements OnInit {
   }
 
   submit(): void {
+    this.isLoading = true;
     const formValue = Object.assign({}, this.form.value, {
       laserEpilation: this.normalizeMultipleQuestionForm('laserEpilation', LASERE_EPILATION).toString(),
       elosEpilation: this.normalizeMultipleQuestionForm('elosEpilation', ELOS_EPILATION).toString(),
@@ -161,7 +163,10 @@ export class AppComponent implements OnInit {
       waxEpilation: this.normalizeMultipleQuestionForm('waxEpilation', WAX_EPILATION).toString()
     });
     this.spreadSheet.createSheet(this.selectedCards, formValue)
-      .pipe(tap(() => this.checkIfCompleteBefore()))
+      .pipe(tap(() => {
+        this.checkIfCompleteBefore();
+        this.isLoading = false;
+      }))
       .subscribe();
   }
 

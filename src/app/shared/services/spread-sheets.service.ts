@@ -14,7 +14,7 @@ export class SpreadSheetsService {
 
   createSheet(ranging: number[], formValues: any): Observable<unknown> {
     const d = new Date();
-    const date = d.toISOString().slice(0, 10);
+    const date = d.toISOString().slice(0, 10).replace('-', '.').toString();
     const time = `${d.getHours()} : ${d.getMinutes()}`;
     return this.http.post<any>(`${environment.CONNECTION_URL}`,
       {
